@@ -1,7 +1,7 @@
-package com.example.first;
+package com.example.first.repositories;
 
+import com.example.first.model.Students;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 
 public interface FirstRepo extends JpaRepository<Students, Integer> {

@@ -1,21 +1,29 @@
-package com.example.first;
+package com.example.first.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Students {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
     private String grade;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Course_Id", referencedColumnName = "cId")
+    private Courses course;
 
-    public Students(int id, String name, String grade) {
-        this.id = id;
+    
+
+    public Students(String name, String grade)  {
+
         this.name = name;
         this.grade = grade;
     }
     public Students(){}
+
 
     public int getId() {
         return id;
@@ -39,6 +47,14 @@ public class Students {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public Courses getCourse() {
+        return course;
+    }
+
+    public void setCourse(Courses course) {
+        this.course = course;
     }
 
     @Override
