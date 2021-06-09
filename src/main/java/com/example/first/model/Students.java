@@ -1,19 +1,17 @@
 package com.example.first.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Students {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
     private int id;
     private String name;
     private String grade;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Course_Id", referencedColumnName = "cId")
-    private Courses course;
+
 
     
 
@@ -21,6 +19,7 @@ public class Students {
 
         this.name = name;
         this.grade = grade;
+
     }
     public Students(){}
 
@@ -49,13 +48,6 @@ public class Students {
         this.grade = grade;
     }
 
-    public Courses getCourse() {
-        return course;
-    }
-
-    public void setCourse(Courses course) {
-        this.course = course;
-    }
 
     @Override
     public String toString() {
